@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const app = express();
 const PORT = 3005;
 
-mongoose.connect('mongodb+srv://StTrace:1234@cluster0.gwy0v.mongodb.net/graphql-tutorial?retryWrites=true&w=majority --username StTrace', {useUnifiedTopology: true, useNewUrlParser: true});
+mongoose.connect('mongodb+srv://StTrace:1234@cluster0.gwy0v.mongodb.net/graphql-tutorial?retryWrites=true&w=majority', {useUnifiedTopology: true, useNewUrlParser: true});
 
 app.use('/graphql', graphqlHTTP({
     schema,
