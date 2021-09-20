@@ -7,12 +7,15 @@ import {directorsQuery} from "../DirectorsTable/queries";
 
 import { styles } from './styles';
 
-const withGraphQl = compose(
+const withGraphQL = compose(
     graphql(addDirectorMutation, {
         props: ({mutate}) =>  ({
             addDirector: director => mutate({
                 variables: director,
-                refetchQueries: [{query: directorsQuery}],
+                refetchQueries: [{
+                    query: directorsQuery,
+                    variables:  {name: ''},
+                }],
             }),
         }),
     }),
@@ -20,11 +23,14 @@ const withGraphQl = compose(
         props: ({mutate}) =>  ({
             updateDirector: director => mutate({
                 variables: director,
-                refetchQueries: [{query: directorsQuery}],
+                refetchQueries: [{
+                    query: directorsQuery,
+                    variables:  {name: ''},
+                }],
             }),
         }),
     })
 );
 
 
-export default compose(withStyles(styles), withGraphQl);
+export default compose(withStyles(styles), withGraphQL);
